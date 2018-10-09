@@ -23,13 +23,12 @@ def apply_coupons(cart, coupons)
         end
       elsif(cart.has_key?(coupon[:item]) && cart.has_key?("#{coupon[:item].upcase} W/COUPON"))
         if(coupon[:num] <= cart[coupon[:item]][:count])
-        cart["#{coupon[:item].upcase} W/COUPON"][:count] = cart["#{coupon[:item].upcase} W/COUPON"][:count] + 1
-        cart["#{coupon[:item]}"][:count] = cart["#{coupon[:item]}"][:count] - coupon[:num]
+          cart["#{coupon[:item].upcase} W/COUPON"][:count] = cart["#{coupon[:item].upcase} W/COUPON"][:count] + 1
+          cart["#{coupon[:item]}"][:count] = cart["#{coupon[:item]}"][:count] - coupon[:num]
         end
       end
   end
   cart
-  #binding.pry
 end
 
 def apply_clearance(cart)
@@ -53,8 +52,5 @@ def checkout(cart, coupons)
   if(sum > 100)
     sum = sum * 0.9
   end
-
-  #binding.pry
   sum
-  #puts "hello"
 end
